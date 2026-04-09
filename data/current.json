@@ -3,12 +3,12 @@
     "month": "April",
     "theme": {
       "name": "easter",
-      "footer_note": "Happy Easter from the AI Division 🐣"
+      "footer_note": "let's see if I'm dumb!"
     }
   },
 
   "featured": {
-    "featured_item_title": "Bryan Finster",
+    "featured_item_title": "Testing another possibility",
     "subject_subtitle": "Bringing an outside perspective to AI transformation & delivery",
     "summary": "Bryan shared his experiences with Agentic workflows and his journey from AI-denialist to AI-advocate. This series brings fresh, external perspective to how we think about AI at scale.",
     "link": "cflearn.example.com/bryan-finster"
@@ -16,9 +16,9 @@
 
   "tooling": {
     "tools": [
-      { "name": "Cursor",         "status": "In Trial" },
+      { "name": "Cursor",         "status": "Adopted" },
       { "name": "Codex",          "status": "In Trial" },
-      { "name": "OpenCode",       "status": "In Trial" },
+      { "name": "OpenCode",       "status": "Adopted" },
       { "name": "Claude",         "status": "In Trial" },
       { "name": "GitHub Copilot", "status": "In Trial" }
     ]
