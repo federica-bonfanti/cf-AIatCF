@@ -1,104 +1,103 @@
-# Field Guide — How to fill in the monthly data
+# Field Guide — How to fill in the monthly spreadsheet
 
-This is for anyone filling in the monthly infographic data. You don't need to know how to code.
-
-**The golden rule:** Copy last month's file, replace the content, validate, done.
+This is for anyone on the AI team filling in the monthly infographic data. You don't need to know how to code, and you don't need access to GitHub or Figma.
 
 ---
 
-## Step by step
+## The short version
 
-1. Find last month's file in `/data/` — e.g. `2026-04.json`
-2. Duplicate it and rename: `2026-05.json`
-3. Fill in each section below
-4. Validate at [jsonschemavalidator.net](https://www.jsonschemavalidator.net/) — paste your file on the left, paste `schema/infographic.schema.json` on the right
-5. If it says "valid" — hand it off to Claude to inject
+Open the shared Google Sheet, fill in every yellow field, ping the designer. Done.
 
 ---
 
-## meta
+## Section by section
+
+### Meta
 
 | Field | What to put | Example |
 |---|---|---|
-| `month` | Month name only | `"April"` |
-| `theme.name` | Seasonal theme. One of: `default` `easter` `summer` `halloween` `christmas` | `"easter"` |
-| `theme.footer_note` | Optional fun line in the footer | `"Happy Easter 🐣"` |
+| Month | Month name only | `May` |
+| Theme | Seasonal theme | `default` |
+| Footer note | Optional fun line | `Happy Easter 🐣` |
 
-For most months use `"default"` and leave `footer_note` as `null`.
-
----
-
-## featured
-
-One spotlight item — a talk, event, or learning.
-
-| Field | What to put | Required? |
-|---|---|---|
-| `featured_item_title` | Speaker name or event title | ✅ |
-| `subject_subtitle` | Their role or a short descriptor | ✅ |
-| `summary` | 2–3 sentences, plain text | ✅ |
-| `link` | URL for the CTA button | ✅ |
+For most months, theme is `default` and footer note is blank.
+Theme options: `default`, `easter`, `summer`, `halloween`, `christmas`
 
 ---
 
-## tooling
+### Featured item
 
-Exactly 5 tools. Each has:
+One spotlight for the month — a talk, event, or piece of learning.
 
-| Field | What to put | Required? |
-|---|---|---|
-| `name` | Tool name | ✅ |
-| `status` | One of: `In Trial` `Adopted` `Dropped` `Evaluating` | ✅ |
-
----
-
-## client_pipeline
-
-Exactly 4 client cards. Each has:
-
-| Field | What to put | Required? |
-|---|---|---|
-| `client_name` | Client name — shown small at top of card | ✅ |
-| `project_title` | Project name — shown large | ✅ |
-| `ask` | What the client asked for, 1–2 sentences | ✅ |
-| `answer` | What CF proposed or did, 1–2 sentences | ✅ |
-| `value` | Monetary value e.g. `"£1m"` | ✅ |
+| Field | What to put |
+|---|---|
+| Title / Speaker name | The name shown large on the card |
+| Subtitle | Their role or a short descriptor |
+| Summary | 2–3 sentences about what this was and why it matters |
+| Link | URL for the button on the card |
 
 ---
 
-## weekly_ai_call
+### AI Tooling
 
-Exactly 4 metrics. Each has:
+Exactly 5 tools. For each one:
 
-| Field | What to put | Required? |
-|---|---|---|
-| `value` | Bold stat e.g. `"40%"` or `"1/wk"` | ✅ |
-| `label` | Short label under the stat | ✅ |
+| Field | What to put |
+|---|---|
+| Tool name | Name of the tool |
+| Status | One of: `In Trial`, `Adopted`, `Dropped`, `Evaluating` |
+
+Status must match exactly — capital letters matter.
 
 ---
 
-## evangelist_shoutouts
+### AI Pipeline with Clients
 
-Exactly 3 shoutout cards. Each has:
+Exactly 4 client cards. For each one:
 
-| Field | What to put | Required? |
-|---|---|---|
-| `client_and_project` | Project name shown at top | ✅ |
-| `lead` | CF lead's name | ✅ |
-| `key_metric_large` | Big bold number or word e.g. `"160+"` | ✅ |
-| `key_metric_small` | Smaller supporting stat or label | ✅ |
-| `key_insight` | 1–2 sentence takeaway | ✅ |
+| Field | What to put |
+|---|---|
+| Client name | Client name — shown small at top of card |
+| Project title | Project name — shown large |
+| The ask | What the client asked CF to do (1–2 sentences) |
+| Our answer | What CF proposed or delivered (1–2 sentences) |
+| Value | Total project value e.g. `£1m` |
+
+---
+
+### Weekly AI Call
+
+Exactly 4 metrics. For each one:
+
+| Field | What to put |
+|---|---|
+| Value | The bold number e.g. `40%` or `1/wk` |
+| Label | Short descriptor underneath e.g. `Strategic clients covered` |
+
+---
+
+### Evangelist Shoutouts
+
+Exactly 3 shoutout cards. For each one:
+
+| Field | What to put |
+|---|---|
+| Client & project name | Project name shown at top of card |
+| Lead | CF lead's name |
+| Key metric (large) | The big bold number or word e.g. `160+` |
+| Key metric (small) | Supporting label e.g. `50 engineers piloting` |
+| Key insight | 1–2 sentences on what this example proves |
 
 ---
 
 ## Common mistakes
 
-- **Wrong status format** — `status` must match exactly: `In Trial`, `Adopted`, `Dropped`, `Evaluating`
-- **Wrong month format** — just the month name: `"April"` not `"April 2026"`
-- **Forgetting a comma** between items in a list — the validator catches this
+- **Leaving a field blank** — every yellow field must be filled in
+- **Wrong status** — must be exactly `In Trial`, `Adopted`, `Dropped`, or `Evaluating`
+- **Too much text** — keep asks, answers, and summaries short. 1–2 sentences max for most fields.
 
 ---
 
 ## Need help?
 
-Ask Claude. Paste your file and say *"validate this against the CF infographic schema"* — it'll spot the problem instantly.
+Ping the designer or ask Claude — paste your filled spreadsheet and say *"does this look right for the CF infographic?"*

@@ -4,63 +4,74 @@ How to produce the AI at CreateFuture infographic each month. End to end in thre
 
 ---
 
+## Who does what
+
+| Step | Who | Time |
+|---|---|---|
+| Fill in the spreadsheet | Anyone on the AI team | ~15 mins |
+| Convert + inject | Designer (using Claude) | ~5 mins |
+| Review, publish, share | Designer | ~5 mins |
+
+---
+
 ## What you need
 
-- Access to this repo
-- Claude (claude.ai) with the Figma MCP connected
-- Edit access to the Figma file: https://www.figma.com/design/2ZT59UJTa0zltcPpjhRVRG
+- The monthly spreadsheet template (Google Sheets — ask the designer for the link)
+- Claude (claude.ai) with the Figma MCP connected — designer only
+- Edit access to the Figma file — designer only
 
 ---
 
-## Step 1 — Fill in the data (you)
+## Step 1 — Fill in the spreadsheet (AI team)
 
-1. Find last month's file in `/data/` — e.g. `2026-04.json`
-2. Duplicate it and rename to the current month — e.g. `2026-05.json`
-3. Fill in all the fields — see [`field-guide.md`](field-guide.md) for what goes where
-4. Validate your file — paste it into [jsonschemavalidator.net](https://www.jsonschemavalidator.net/) with `schema/infographic.schema.json` on the right
-5. Commit and push to GitHub
+1. Open the shared Google Sheet for this month
+2. Fill in every yellow field — every section, every row
+3. When done, ping the designer: *"May spreadsheet is ready"*
+
+That's it. You're done.
 
 ---
 
-## Step 2 — Inject the data (Claude)
+## Step 2 — Convert and inject (designer)
 
-Open a new chat with Claude and say:
+**2a — Convert spreadsheet to JSON**
 
-> "Inject data/2026-05.json into the CF AI Infographic Figma template"
+Open a new Claude chat and say:
+
+> "I've filled in the CF AI Infographic spreadsheet for [month]. Please read CLAUDE.md from https://github.com/federica-bonfanti/cf-AIatCF and convert this spreadsheet to the correct JSON format."
+
+Then upload the filled spreadsheet. Claude will output the JSON.
+
+**2b — Inject into Figma**
+
+In the same Claude chat, say:
+
+> "Now inject this JSON into the Figma template following CLAUDE.md"
 
 Claude will:
-- Read the JSON
 - Duplicate the clean template frame in Figma
-- Populate every slot with real data
+- Populate every slot with the month's data
 - Leave the original template untouched
 
-The new frame will be named `CF AI Infographic — May 2026` and will appear next to the template in the Figma file.
+The new frame will appear in Figma named e.g. `CF AI Infographic — May 2026`.
 
 ---
 
-## Step 3 — Publish and share (you, 30 seconds)
+## Step 3 — Review, publish and share (designer)
 
-1. Open the Figma file
-2. Click on the new frame (`CF AI Infographic — May 2026`)
-3. Hit **Share** (top right) → **Publish to web**
-4. Copy the `figma.site` link
-5. Share it with the team 🎉
-
----
-
-## Figma file
-
-**Template:** https://www.figma.com/design/2ZT59UJTa0zltcPpjhRVRG/CF-AI-Infographic-%E2%80%94-Template-POC
-
-The template frame (`CF AI Infographic — Template POC`) always stays clean with `[bracket]` placeholders. Never manually edit it with real data.
+1. Open the Figma file: https://www.figma.com/design/2ZT59UJTa0zltcPpjhRVRG
+2. Find the new frame — e.g. `CF AI Infographic — May 2026`
+3. Review it — tweak anything that needs adjusting
+4. Click **Present** (play button, top right) to enter presentation mode
+5. Click **Share prototype** in the toolbar
+6. Set access to **Anyone with the link** → **Can view**
+7. Click **Copy link**
+8. Share the link with the team 🎉
 
 ---
 
 ## If something looks wrong after injection
 
-Check that:
-- All fields in the JSON are filled in (no empty strings)
-- The JSON validated successfully before injecting
-- No Figma layer names were renamed since last month
-
-If a field didn't inject, tell Claude which one — it can fix it directly in the Figma frame.
+- Check all fields in the spreadsheet were filled in — no blanks
+- Tell Claude which field looks wrong — it can fix it directly in the Figma frame
+- If a whole section is missing, Claude can re-run just that section

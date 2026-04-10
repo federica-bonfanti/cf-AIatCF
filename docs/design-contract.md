@@ -1,14 +1,14 @@
 # Design Contract
 
-This document defines the boundary between the **data layer** (this repo) and the **design layer** (Figma Make).
+This document defines the boundary between the **data layer** (this repo) and the **design layer** (Figma).
 
-It exists so the designer knows exactly what they own, and data fillers know what they can't touch.
+It exists so the designer knows exactly what they own, and everyone else knows what they can't touch.
 
 ---
 
 ## The designer owns
 
-These things live entirely in Figma Make. They are never in the data file.
+These things live entirely in Figma. They are never in the data file.
 
 | Element | Notes |
 |---|---|
@@ -18,79 +18,66 @@ These things live entirely in Figma Make. They are never in the data file.
 | Card design | Borders, corner radius, elevation |
 | Logo placement | CF logo, position, size |
 | Section layout | How each section's data is presented visually |
-| Badge styles | How `won` / `pending` / `in_progress` / `lost` look |
-| Stage badge styles | How `early` / `growing` / `scaled` look |
-| Theme decoration sets | The actual assets (icons, illustrations) for each named theme |
+| Theme decoration sets | The actual assets for each named theme |
 
 ---
 
 ## The data layer owns
 
-These things come from `/data/YYYY-MM.json`. The designer creates *slots* for them in Figma Make — they do not hardcode them.
+These things come from the monthly JSON (generated from the Google Sheet). The Figma template has named `[bracket]` slots for each one — the designer must never hardcode them.
 
-| Data field | Slot type in Figma Make |
+| Data field | Figma layer name |
 |---|---|
-| All text content | Text variable |
-| Metric values and labels | Text variable |
-| Tool names and statuses | List / repeater |
-| Client cards | List / repeater |
-| Shoutout cards | List / repeater |
-| Featured items | List / repeater (1–3) |
-| Theme name | Condition — controls which decoration set is shown |
-| CTA URLs | Link variable |
+| Month | `[MONTH] 2026 HIGHLIGHTS` |
+| Featured title | `[featured_item_title]` |
+| Featured subtitle | `[subject_subtitle]` |
+| Featured summary | `[summary]` |
+| Featured link | Layer named `Text` containing `[link]` |
+| Tool names | `[tool 1 name]` through `[tool 5 name]` |
+| Tool statuses | `[status]` (×5, matched by order) |
+| Client names | `[CLIENT NAME 1]` through `[CLIENT NAME 4]` |
+| Project titles | `[Project title 1]` through `[Project title 4]` |
+| Client asks | `[the ask]` (×4, matched by order) |
+| Client answers | `[answer]` (×4, matched by order) |
+| Project values | `[value 1]` through `[value 4]` |
+| Weekly metrics | `[metric 1]` through `[metric 4]` |
+| Weekly labels | `[LABEL]` (×4, matched by order) |
+| Shoutout names | `[Client & Project name 1]` through `[Client & Project name 3]` |
+| Shoutout leads | `LEAD: [NAME OF THE PROJECT LEAD 1]` through `...3` |
+| Key metrics large | `[Key metric 1]` through `[Key metric 3]` (first occurrence) |
+| Key metrics small | `[Key metric 1]` through `[Key metric 3]` (second occurrence) |
+| Key insights | `[Key insight 1]` through `[Key insight 3]` |
+| Footer note | `[theme.footer_note]` |
 
 ---
 
-## Shared responsibility
+## Critical rules for the designer
 
-| Element | Who decides |
-|---|---|
-| How many items appear | **Data** (within the min/max in the schema) |
-| What the items say | **Data** |
-| How items are laid out | **Design** |
-| Whether a null field hides a slot | **Design** — slots with null values should hide gracefully |
+- **Never rename a layer** that contains `[brackets]` — the injection script finds slots by exact layer name
+- **Never hardcode real content** in the template frame — always use `[bracket]` placeholders
+- **If you add a new section**, tell the developer — `CLAUDE.md` and the injection script need to be updated too
+- **The template frame is sacred** — Claude duplicates it each month, so the original must always stay clean
 
 ---
 
 ## Adding a new field
 
-If the data layer needs a new field:
-
-1. Propose it in a PR to `schema/infographic.schema.json`
-2. Tag the designer — they need to add the corresponding slot in Figma Make before the field goes live
-3. Update `docs/field-guide.md` with instructions for fillers
-4. Deploy together
-
-**Never add a field to a data file before the schema and Figma Make slot exist.**
+1. Add the `[bracket]` slot to the Figma template with the agreed layer name
+2. Update `CLAUDE.md` with the new layer name and injection logic
+3. Update `schema/infographic.schema.json` with the new field
+4. Update the Google Sheet template with the new input field
+5. Test with a fresh injection before shipping
 
 ---
 
 ## Theme contract
 
 Themes are **decorative only**. A theme can:
-
-- Add floating icons / illustrations to the header and background
-- Change the header illustration or pattern
-- Adjust the tone of small incidental copy (e.g. a footer line)
+- Add floating icons or illustrations to the header
+- Add a footer note line
 
 A theme **cannot**:
-
 - Change the colour palette
 - Change the layout or grid
 - Add or remove sections
 - Change typography
-
-Each named theme has a corresponding file in `/themes/`. The designer maintains these files — they define which assets map to which theme name.
-
----
-
-## The schema is the contract
-
-If a data file validates against `schema/infographic.schema.json`, the designer's template must be able to render it — including edge cases like:
-
-- A shoutout card with no metrics
-- A featured item with no CTA
-- A client card with `value: null`
-- A shoutout card with `big_win: null`
-
-The designer should test these cases when building the template.

@@ -2,15 +2,17 @@
 
 A lightweight data-injection system for the monthly **AI at CreateFuture** infographic.
 
-The design lives in Figma. This repo owns the **data** that feeds it. Each month, someone fills in a JSON file, Claude injects it into the Figma template, and the result gets published as a Figma site link.
+The design lives in Figma. This repo owns the **data and instructions** that feed it. Each month, someone fills in a Google Sheet, the designer converts it to JSON using Claude, injects it into Figma, and shares a prototype link with the team.
 
 ---
 
 ## Quick start
 
-→ **Running it this month?** See [`docs/monthly-workflow.md`](docs/monthly-workflow.md)
+→ **Filling in the spreadsheet?** Just fill in the Google Sheet and ping the designer. No repo access needed.
 
-→ **Filling in the data?** See [`docs/field-guide.md`](docs/field-guide.md)
+→ **Running the injection?** See [`docs/monthly-workflow.md`](docs/monthly-workflow.md)
+
+→ **New to Claude?** Read [`CLAUDE.md`](CLAUDE.md) — it has everything Claude needs to run the injection cold.
 
 → **Changing the design?** See [`docs/design-contract.md`](docs/design-contract.md)
 
@@ -19,11 +21,14 @@ The design lives in Figma. This repo owns the **data** that feeds it. Each month
 ## How it works
 
 ```
-Fill in /data/YYYY-MM.json
+AI team fills in Google Sheet
         ↓
-Tell Claude to inject it → Figma frame created automatically
+Designer uploads sheet to Claude
+Claude converts it to JSON + injects into Figma
         ↓
-Publish the frame in Figma → share the figma.site link
+New Figma frame appears automatically
+        ↓
+Designer reviews → Present → Share prototype → team gets a link
 ```
 
 ---
@@ -39,33 +44,34 @@ The template frame always stays clean with `[bracket]` placeholders. Claude dupl
 ## Repo structure
 
 ```
+CLAUDE.md                     ← start here if you're Claude running the injection
+
 /data
-  2026-04.json              ← April 2026
-  2026-05.json              ← May 2026
-  YYYY-MM.json              ← add one per month
+  2026-04.json                ← April 2026
+  2026-05.json                ← May 2026
+  template.json               ← blank template for reference
 
 /schema
-  infographic.schema.json   ← validation rules
+  infographic.schema.json     ← JSON validation rules
 
 /docs
-  monthly-workflow.md       ← how to run it each month
-  field-guide.md            ← how to fill in the data
-  design-contract.md        ← what the designer can/can't change
+  monthly-workflow.md         ← step by step for each month
+  design-contract.md          ← what the designer can/can't change
 
 /themes
-  default.json              ← base CF (no seasonal overlay)
-  easter.json               ← Easter decoration config
+  default.json                ← base CF (no seasonal overlay)
+  easter.json                 ← Easter decoration config
 
 /scripts
-  validate.js               ← npm run validate
-  inject.js                 ← injection script (run via Figma MCP)
+  validate.js                 ← npm run validate
+  inject.js                   ← injection script reference
 ```
 
 ---
 
 ## Rules
 
-- **Never rename Figma layers** without updating the injection script
-- **Never add a JSON field** without telling the designer — they need to add the matching Figma layer
+- **Never rename Figma layers** without updating CLAUDE.md and the injection script
+- **Never add a field** without telling the designer — they need to add the matching Figma layer
 - **Theme changes are decorative only** — no layout, colour, or typography changes
 - **The template frame is sacred** — never manually edit it with real data
