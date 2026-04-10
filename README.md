@@ -2,52 +2,29 @@
 
 A lightweight data-injection system for the monthly **AI at CreateFuture** infographic.
 
-The design lives in Figma. This repo owns the **data** that feeds it.
+The design lives in Figma. This repo owns the **data** that feeds it. Each month, someone fills in a JSON file, Claude injects it into the Figma template, and the result gets published as a Figma site link.
+
+---
+
+## Quick start
+
+→ **Running it this month?** See [`docs/monthly-workflow.md`](docs/monthly-workflow.md)
+
+→ **Filling in the data?** See [`docs/field-guide.md`](docs/field-guide.md)
+
+→ **Changing the design?** See [`docs/design-contract.md`](docs/design-contract.md)
 
 ---
 
 ## How it works
 
 ```
-You fill in /data/YYYY-MM.json
+Fill in /data/YYYY-MM.json
         ↓
-Claude reads the file and injects data into the named Figma layers
+Tell Claude to inject it → Figma frame created automatically
         ↓
-Designer reviews & exports
+Publish the frame in Figma → share the figma.site link
 ```
-
----
-
-## Who does what
-
-| Role | What they touch |
-|---|---|
-| **Data filler** (anyone) | `/data/YYYY-MM.json` only |
-| **Designer** | Figma file — layout, colour, type |
-| **Claude** | Reads the JSON, writes to Figma layer slots via MCP |
-
----
-
-## Monthly process
-
-1. Duplicate last month's file: `cp data/2026-04.json data/2026-05.json`
-2. Fill in the new file — see [`docs/field-guide.md`](docs/field-guide.md)
-3. Validate: `npm run validate`
-4. Tell Claude: *"Inject data/2026-05.json into the Figma template"*
-5. Designer reviews the generated frame, exports
-
----
-
-## Current sections
-
-| # | Section | Status |
-|---|---|---|
-| Header | Month, title, tagline | ✅ |
-| 01 | Featured section & Tooling | ✅ |
-| 02 | AI Pipeline with Clients | ✅ |
-| 03 | Weekly AI Call | ✅ |
-| 04 | Evangelist Shoutouts | ✅ |
-| Footer | Logo, disclaimer, theme note | ✅ |
 
 ---
 
@@ -55,22 +32,24 @@ Designer reviews & exports
 
 **Template:** https://www.figma.com/design/2ZT59UJTa0zltcPpjhRVRG/CF-AI-Infographic-%E2%80%94-Template-POC
 
-The template frame stays clean with `[bracket]` placeholders. Each month Claude duplicates it and injects real data into the copy. The original is never touched.
+The template frame always stays clean with `[bracket]` placeholders. Claude duplicates it and injects real data into the copy each month. The original is never touched.
 
 ---
 
-## Structure
+## Repo structure
 
 ```
 /data
-  2026-04.json              ← April 2026 (first real example)
+  2026-04.json              ← April 2026
+  2026-05.json              ← May 2026
   YYYY-MM.json              ← add one per month
 
 /schema
   infographic.schema.json   ← validation rules
 
 /docs
-  field-guide.md            ← plain-English guide for data fillers
+  monthly-workflow.md       ← how to run it each month
+  field-guide.md            ← how to fill in the data
   design-contract.md        ← what the designer can/can't change
 
 /themes
@@ -86,7 +65,7 @@ The template frame stays clean with `[bracket]` placeholders. Each month Claude 
 
 ## Rules
 
-- **Never rename Figma layers** without updating the injection script — layer names are how Claude finds the slots
+- **Never rename Figma layers** without updating the injection script
 - **Never add a JSON field** without telling the designer — they need to add the matching Figma layer
 - **Theme changes are decorative only** — no layout, colour, or typography changes
-- **The template frame is sacred** — never manually edit it with real data, always let the injection script create a copy
+- **The template frame is sacred** — never manually edit it with real data

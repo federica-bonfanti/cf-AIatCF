@@ -1,0 +1,50 @@
+{
+  "_instructions": "Copy this file, rename it to YYYY-MM.json, fill in all fields, then validate before handing off. See docs/field-guide.md for help.",
+
+  "meta": {
+    "month": "",
+    "theme": {
+      "name": "default",
+      "footer_note": null
+    }
+  },
+
+  "featured": {
+    "featured_item_title": "",
+    "subject_subtitle": "",
+    "summary": "",
+    "link": ""
+  },
+
+  "tooling": {
+    "tools": [
+      { "name": "", "status": "In Trial" },
+      { "name": "", "status": "In Trial" },
+      { "name": "", "status": "In Trial" },
+      { "name": "", "status": "In Trial" },
+      { "name": "", "status": "In Trial" }
+    ]
+  },
+
+  "client_pipeline": [
+    { "client_name": "", "project_title": "", "ask": "", "answer": "", "value": "" },
+    { "client_name": "", "project_title": "", "ask": "", "answer": "", "value": "" },
+    { "client_name": "", "project_title": "", "ask": "", "answer": "", "value": "" },
+    { "client_name": "", "project_title": "", "ask": "", "answer": "", "value": "" }
+  ],
+
+  "weekly_ai_call": {
+    "metrics": [
+      { "value": "", "label": "" },
+      { "value": "", "label": "" },
+      { "value": "", "label": "" },
+      { "value": "", "label": "" }
+    ]
+  },
+
+  "evangelist_shoutouts": [
+    { "client_and_project": "", "lead": "", "key_metric_large": "", "key_metric_small": "", "key_insight": "" },
+    { "client_and_project": "", "lead": "", "key_metric_large": "", "key_metric_small": "", "key_insight": "" },
+    { "client_and_project": "", "lead": "", "key_metric_large": "", "key_metric_small": "", "key_insight": "" }
+  ]
+}

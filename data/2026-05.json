@@ -1,0 +1,90 @@
+{
+  "meta": {
+    "month": "May",
+    "theme": {
+      "name": "default",
+      "footer_note": null
+    }
+  },
+
+  "featured": {
+    "featured_item_title": "Lena Fischer",
+    "subject_subtitle": "How AI is reshaping product discovery at scale",
+    "summary": "Lena shared how her team at a leading e-commerce platform rebuilt their search and recommendation engine using LLMs. A fascinating look at the gap between AI hype and production reality.",
+    "link": "cflearn.example.com/lena-fischer"
+  },
+
+  "tooling": {
+    "tools": [
+      { "name": "Cursor",         "status": "Adopted" },
+      { "name": "Codex",          "status": "Dropped" },
+      { "name": "OpenCode",       "status": "In Trial" },
+      { "name": "Claude",         "status": "Adopted" },
+      { "name": "GitHub Copilot", "status": "Adopted" }
+    ]
+  },
+
+  "client_pipeline": [
+    {
+      "client_name": "Barclays",
+      "project_title": "AI-Assisted Credit Risk Modelling",
+      "ask": "Explore how AI can improve speed and accuracy of credit risk decisions",
+      "answer": "CF proposed an LLM-assisted triage layer feeding into existing risk models",
+      "value": "£2m"
+    },
+    {
+      "client_name": "NHS Digital",
+      "project_title": "Clinical Note Summarisation",
+      "ask": "Reduce time clinicians spend on admin by automating note summarisation",
+      "answer": "Pilot using Claude to summarise unstructured clinical notes into structured handoffs",
+      "value": "£500k"
+    },
+    {
+      "client_name": "Monzo",
+      "project_title": "Agentic Customer Support",
+      "ask": "Build an AI-first support experience that reduces human escalations",
+      "answer": "CF designed an agentic support flow handling tier-1 queries end to end",
+      "value": "£1.2m"
+    },
+    {
+      "client_name": "Network Rail",
+      "project_title": "Predictive Maintenance Platform",
+      "ask": "Use AI to predict infrastructure failures before they cause disruption",
+      "answer": "CF proposed an ML pipeline ingesting sensor data to flag anomalies 48hrs in advance",
+      "value": "£3m"
+    }
+  ],
+
+  "weekly_ai_call": {
+    "metrics": [
+      { "value": "18%",  "label": "Client-facing Creatrs in attendance" },
+      { "value": "55%",  "label": "Strategic clients covered" },
+      { "value": "80%",  "label": "Of projects encompassed" },
+      { "value": "1/wk", "label": "Cadence — ongoing" }
+    ]
+  },
+
+  "evangelist_shoutouts": [
+    {
+      "client_and_project": "Barclays Risk",
+      "lead": "Priya Nair",
+      "key_metric_large": "3×",
+      "key_metric_small": "Faster model iteration",
+      "key_insight": "AI tooling cutting cycle time on risk model experiments from weeks to days"
+    },
+    {
+      "client_and_project": "Monzo Support",
+      "lead": "Tom Hedges",
+      "key_metric_large": "40%",
+      "key_metric_small": "Reduction in escalations",
+      "key_insight": "Agentic support handling tier-1 queries with measurable drop in human handoffs"
+    },
+    {
+      "client_and_project": "NHS Clinical Pilot",
+      "lead": "Sarah Okafor",
+      "key_metric_large": "12min",
+      "key_metric_small": "Saved per clinician per shift",
+      "key_insight": "Early pilot showing significant admin time saved through automated note summarisation"
+    }
+  ]
+}
