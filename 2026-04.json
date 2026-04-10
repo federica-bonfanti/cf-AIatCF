@@ -1,137 +1,90 @@
 {
   "meta": {
-    "month": "April 2026",
-    "tagline": "Expert Talks · AI Tooling · Client Pipeline · Evangelist Shoutouts",
+    "month": "April",
     "theme": {
       "name": "easter",
-      "decorative_elements": {
-        "icons": ["🥚", "🐣", "🌸"],
-        "pattern": "eggs",
-        "accent_color_override": null
-      }
+      "footer_note": "Happy Easter from the AI Division 🐣"
     }
   },
 
-  "featured": [
-    {
-      "type": "talk",
-      "title": "Expert Talk Series — First of Series",
-      "subject": "Bryan Finster",
-      "subject_subtitle": "Bringing an outside perspective to AI transformation & delivery",
-      "date": "19 March 2026",
-      "summary": "Bryan shared his experiences with Agentic workflows and his journey from AI-denialist to AI-advocate. This series brings fresh, external perspective to how we think about AI at scale.",
-      "tags": ["Agentic workflows", "AI-denialist to AI-advocate"],
-      "cta_label": "Watch on CF Learn",
-      "cta_url": "https://cflearn.example.com/bryan-finster"
-    }
-  ],
+  "featured": {
+    "featured_item_title": "Bryan Finster",
+    "subject_subtitle": "Bringing an outside perspective to AI transformation & delivery",
+    "summary": "Bryan shared his experiences with Agentic workflows and his journey from AI-denialist to AI-advocate. This series brings fresh, external perspective to how we think about AI at scale.",
+    "link": "cflearn.example.com/bryan-finster"
+  },
 
   "tooling": {
-    "headline": "Tool Assessment Finalising This Month",
-    "body": "Trialling AI tools across the business — direction coming very soon.",
     "tools": [
-      { "name": "Cursor", "logo_search": "Cursor IDE logo", "status": "in_trial" },
-      { "name": "Codex", "logo_search": "OpenAI Codex logo", "status": "in_trial" },
-      { "name": "OpenCode", "logo_search": "OpenCode logo", "status": "in_trial" },
-      { "name": "Claude", "logo_search": "Anthropic Claude logo", "status": "in_trial" },
-      { "name": "GitHub Copilot", "logo_search": "GitHub Copilot logo", "status": "in_trial" }
-    ],
-    "spoiler": "Expect more than one option!"
-  },
-
-  "client_pipeline": {
-    "intro": "A select few opportunities this month...",
-    "clients": [
-      {
-        "client_name": "Flutter UKI",
-        "ask": "Build an Agentic operational platform within AWS",
-        "answer": "Platform for all Flutter UKI sub-brands + Agent marketplace for all teams",
-        "result": "won",
-        "value": "£1m"
-      },
-      {
-        "client_name": "PayPoint",
-        "ask": "Analyse AI delivery capability and maturity",
-        "answer": "3 CF domain teams proposed transformation on Customer Service — AI-enabled self-service",
-        "result": "pending",
-        "value": null
-      },
-      {
-        "client_name": "Royal London",
-        "ask": "Drive AI adoption within Royal London teams",
-        "answer": "Embed a Principal Engineer as first mover, 50/50 on delivery and transformation",
-        "result": "pending",
-        "value": null
-      },
-      {
-        "client_name": "Zuto",
-        "ask": "Support Zuto — a scaling car finance broker in rapid growth",
-        "answer": "CF as transformation partner, Agentic AI to drive efficiencies and improve white-glove service",
-        "result": "in_progress",
-        "value": "£1m"
-      }
+      { "name": "Cursor",         "status": "In Trial" },
+      { "name": "Codex",          "status": "In Trial" },
+      { "name": "OpenCode",       "status": "In Trial" },
+      { "name": "Claude",         "status": "In Trial" },
+      { "name": "GitHub Copilot", "status": "In Trial" }
     ]
   },
 
+  "client_pipeline": [
+    {
+      "client_name": "Flutter UKI",
+      "project_title": "Agentic Platform within AWS",
+      "ask": "Build an Agentic operational platform within AWS",
+      "answer": "Platform for all Flutter UKI sub-brands + Agent marketplace for all teams",
+      "value": "£1m"
+    },
+    {
+      "client_name": "PayPoint",
+      "project_title": "AI Delivery Capability & Maturity",
+      "ask": "Analyse AI delivery capability and maturity",
+      "answer": "3 CF domain teams proposed transformation on Customer Service — AI-enabled self-service",
+      "value": "£1.5m"
+    },
+    {
+      "client_name": "Royal London",
+      "project_title": "Drive AI Adoption Within Teams",
+      "ask": "Drive AI adoption within Royal London teams",
+      "answer": "Embed a Principal Engineer as first mover, 50/50 on delivery and transformation",
+      "value": "£100k"
+    },
+    {
+      "client_name": "Zuto",
+      "project_title": "Car Finance Transformation",
+      "ask": "Support Zuto — a scaling car finance broker in rapid growth",
+      "answer": "CF as transformation partner, Agentic AI to drive efficiencies and improve white-glove service",
+      "value": "£1m"
+    }
+  ],
+
   "weekly_ai_call": {
-    "headline": "AI Reach Across Client Projects",
     "metrics": [
-      { "value": "10%", "label": "Client-facing Creatrs in attendance" },
-      { "value": "40%", "label": "Largest & most strategic clients covered" },
-      { "value": "80%", "label": "Of projects encompassed" },
+      { "value": "10%",  "label": "Client-facing Creatrs" },
+      { "value": "40%",  "label": "Strategic clients covered" },
+      { "value": "80%",  "label": "Of projects encompassed" },
       { "value": "1/wk", "label": "Cadence — ongoing" }
-    ],
-    "what_it_covers": [
-      "Where AI is currently being used on projects",
-      "Opportunities to expand AI within and across projects",
-      "What's working (and what isn't)",
-      "Growing weekly — more Creatrs joining each week"
-    ],
-    "cta_contact": "Gregor Bulloch"
+    ]
   },
 
   "evangelist_shoutouts": [
     {
-      "project_name": "Home Office LEDS",
-      "client": "PA Consulting / Home Office",
+      "client_and_project": "Home Office LEDS",
       "lead": "Jonathan Kirkman",
-      "stage": "scaled",
-      "big_win": "GitHub Copilot embedded at scale",
-      "in_progress": null,
-      "metrics": [
-        { "value": "160+", "label": "People trained" },
-        { "value": "50", "label": "Engineers actively piloting" },
-        { "value": "10", "label": "Teams trained" }
-      ],
-      "client_quote": null,
-      "quote_attribution": null,
-      "what_this_shows": "AI being embedded at scale into day-to-day engineering practices"
+      "key_metric_large": "160+",
+      "key_metric_small": "50 engineers piloting",
+      "key_insight": "AI being embedded at scale into day-to-day engineering practices"
     },
     {
-      "project_name": "Tombola Platform",
-      "client": "Tombola",
+      "client_and_project": "Tombola Platform",
       "lead": "Andy Shutt",
-      "stage": "early",
-      "big_win": null,
-      "in_progress": "Custom Copilot Ticket Writer Agent",
-      "metrics": [],
-      "client_quote": null,
-      "quote_attribution": null,
-      "what_this_shows": "Laying the groundwork and identifying high-value use cases before scaling"
+      "key_metric_large": "Early",
+      "key_metric_small": "Stage adoption",
+      "key_insight": "Laying the groundwork and identifying high-value use cases before scaling"
     },
     {
-      "project_name": "OAG Analyser",
-      "client": "OAG",
+      "client_and_project": "OAG Analyser",
       "lead": "Owen Lacey",
-      "stage": "growing",
-      "big_win": "Ask Analyser + Analyser AI Chat Interface launched",
-      "in_progress": "Trialling a huddle model with cross-team involvement across the SDLC",
-      "metrics": [
-        { "value": "−½", "label": "Time to Value vs previous quarter" }
-      ],
-      "client_quote": "I've felt so free these last few weeks.",
-      "quote_attribution": "Khully, Engineer",
-      "what_this_shows": "Tangible productivity gains and improved team experience through AI + process change"
+      "key_metric_large": "−½",
+      "key_metric_small": "Time to Value",
+      "key_insight": "Tangible productivity gains and improved team experience through AI + process change"
     }
   ]
 }

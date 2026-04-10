@@ -10,18 +10,12 @@
 
     "meta": {
       "type": "object",
-      "required": ["month", "theme", "tagline"],
+      "required": ["month", "theme"],
       "additionalProperties": false,
       "properties": {
         "month": {
           "type": "string",
-          "description": "Display month and year, e.g. 'April 2026'",
-          "example": "April 2026"
-        },
-        "tagline": {
-          "type": "string",
-          "description": "Short section summary shown in the header, separated by ·",
-          "example": "Expert Talks · AI Tooling · Client Pipeline · Evangelist Shoutouts"
+          "description": "Month name only, e.g. 'April'"
         },
         "theme": {
           "type": "object",
@@ -30,27 +24,11 @@
           "properties": {
             "name": {
               "type": "string",
-              "description": "Name of the seasonal theme. Must match a file in /themes/",
               "enum": ["default", "easter", "summer", "halloween", "christmas"]
             },
-            "decorative_elements": {
-              "type": "object",
-              "description": "Optional overrides. If omitted, defaults from /themes/{name}.json are used.",
-              "additionalProperties": false,
-              "properties": {
-                "icons": {
-                  "type": "array",
-                  "items": { "type": "string" },
-                  "maxItems": 3
-                },
-                "pattern": {
-                  "type": ["string", "null"]
-                },
-                "accent_color_override": {
-                  "type": ["string", "null"],
-                  "description": "Hex colour. Only affects decorative elements, never layout or text."
-                }
-              }
+            "footer_note": {
+              "type": ["string", "null"],
+              "description": "Optional fun line shown in the footer, e.g. 'Happy Easter 🐣'"
             }
           }
         }
@@ -58,135 +36,84 @@
     },
 
     "featured": {
-      "type": "array",
-      "description": "Spotlight items this month — talks, events, learning. Min 1, max 3.",
-      "minItems": 1,
-      "maxItems": 3,
-      "items": {
-        "type": "object",
-        "required": ["type", "title", "summary"],
-        "additionalProperties": false,
-        "properties": {
-          "type": {
-            "type": "string",
-            "enum": ["talk", "event", "learning"],
-            "description": "Determines the icon and label shown on the card"
-          },
-          "title": {
-            "type": "string",
-            "description": "Card heading, e.g. 'Expert Talk Series — First of Series'"
-          },
-          "subject": {
-            "type": ["string", "null"],
-            "description": "Speaker name, event name, or course name"
-          },
-          "subject_subtitle": {
-            "type": ["string", "null"],
-            "description": "Role or short descriptor under the subject name"
-          },
-          "date": {
-            "type": ["string", "null"],
-            "description": "Display date, e.g. '19 March 2026'"
-          },
-          "summary": {
-            "type": "string",
-            "description": "2–4 sentence description. Plain text only."
-          },
-          "tags": {
-            "type": "array",
-            "items": { "type": "string" },
-            "maxItems": 4,
-            "description": "Highlight terms shown as pills on the card"
-          },
-          "cta_label": {
-            "type": ["string", "null"],
-            "description": "Button label, e.g. 'Watch on CF Learn'"
-          },
-          "cta_url": {
-            "type": ["string", "null"],
-            "format": "uri"
-          }
+      "type": "object",
+      "required": ["featured_item_title", "subject_subtitle", "summary", "link"],
+      "additionalProperties": false,
+      "properties": {
+        "featured_item_title": {
+          "type": "string",
+          "description": "Speaker name or event title shown large on the card"
+        },
+        "subject_subtitle": {
+          "type": "string",
+          "description": "Role or short descriptor under the title"
+        },
+        "summary": {
+          "type": "string",
+          "description": "2–3 sentences, plain text"
+        },
+        "link": {
+          "type": "string",
+          "description": "URL for the CTA button"
         }
       }
     },
 
     "tooling": {
       "type": "object",
-      "required": ["headline", "tools"],
+      "required": ["tools"],
       "additionalProperties": false,
       "properties": {
-        "headline": {
-          "type": "string"
-        },
-        "body": {
-          "type": ["string", "null"],
-          "description": "Optional supporting sentence under the headline"
-        },
         "tools": {
           "type": "array",
-          "minItems": 1,
-          "maxItems": 10,
+          "minItems": 5,
+          "maxItems": 5,
+          "description": "Exactly 5 tools",
           "items": {
             "type": "object",
             "required": ["name", "status"],
             "additionalProperties": false,
             "properties": {
               "name": { "type": "string" },
-              "logo_search": {
-                "type": ["string", "null"],
-                "description": "Search term used to find the tool logo. Leave null if unclear."
-              },
               "status": {
                 "type": "string",
-                "enum": ["in_trial", "adopted", "dropped", "evaluating"]
+                "enum": ["In Trial", "Adopted", "Dropped", "Evaluating"]
               }
             }
           }
-        },
-        "spoiler": {
-          "type": ["string", "null"],
-          "description": "Optional teaser line shown at the bottom of the tooling card"
         }
       }
     },
 
     "client_pipeline": {
-      "type": "object",
-      "required": ["clients"],
-      "additionalProperties": false,
-      "properties": {
-        "intro": {
-          "type": ["string", "null"],
-          "description": "Optional short intro line above the client cards"
-        },
-        "clients": {
-          "type": "array",
-          "minItems": 3,
-          "maxItems": 8,
-          "items": {
-            "type": "object",
-            "required": ["client_name", "ask", "answer", "result"],
-            "additionalProperties": false,
-            "properties": {
-              "client_name": { "type": "string" },
-              "ask": {
-                "type": "string",
-                "description": "What the client asked for. 1–2 sentences."
-              },
-              "answer": {
-                "type": "string",
-                "description": "What CF proposed or delivered. 1–2 sentences."
-              },
-              "result": {
-                "type": "string",
-                "enum": ["won", "pending", "in_progress", "lost"],
-                "description": "Maps to a badge style in the template"
-              },
-              "value": {
-                "type": ["string", "null"],
-                "description": "Monetary value if relevant, e.g. '£1m'. Null if not applicable."
-              }
-            }
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "description": "Exactly 4 client cards",
+      "items": {
+        "type": "object",
+        "required": ["client_name", "project_title", "ask", "answer", "value"],
+        "additionalProperties": false,
+        "properties": {
+          "client_name": {
+            "type": "string",
+            "description": "Client name shown small at top of card"
+          },
+          "project_title": {
+            "type": "string",
+            "description": "Project name shown large"
+          },
+          "ask": {
+            "type": "string",
+            "description": "What the client asked for, 1–2 sentences"
+          },
+          "answer": {
+            "type": "string",
+            "description": "What CF proposed or delivered, 1–2 sentences"
+          },
+          "value": {
+            "type": "string",
+            "description": "Monetary value e.g. '£1m'"
           }
         }
       }
@@ -194,14 +121,14 @@
 
     "weekly_ai_call": {
       "type": "object",
-      "required": ["headline", "metrics"],
+      "required": ["metrics"],
       "additionalProperties": false,
       "properties": {
-        "headline": { "type": "string" },
         "metrics": {
           "type": "array",
-          "minItems": 2,
-          "maxItems": 6,
+          "minItems": 4,
+          "maxItems": 4,
+          "description": "Exactly 4 metrics",
           "items": {
             "type": "object",
             "required": ["value", "label"],
@@ -209,7 +136,7 @@
             "properties": {
               "value": {
                 "type": "string",
-                "description": "Bold display number or stat, e.g. '40%' or '1/wk'"
+                "description": "Bold stat e.g. '40%' or '1/wk'"
               },
               "label": {
                 "type": "string",
@@ -217,75 +144,39 @@
               }
             }
           }
-        },
-        "what_it_covers": {
-          "type": "array",
-          "items": { "type": "string" },
-          "maxItems": 6,
-          "description": "Bullet points shown in the right column of this section"
-        },
-        "cta_contact": {
-          "type": ["string", "null"],
-          "description": "Name of person to contact to get involved"
         }
       }
     },
 
     "evangelist_shoutouts": {
       "type": "array",
-      "minItems": 1,
-      "maxItems": 6,
+      "minItems": 3,
+      "maxItems": 3,
+      "description": "Exactly 3 shoutout cards",
       "items": {
         "type": "object",
-        "required": ["project_name", "client", "lead", "stage", "what_this_shows"],
+        "required": ["client_and_project", "lead", "key_metric_large", "key_metric_small", "key_insight"],
         "additionalProperties": false,
         "properties": {
-          "project_name": { "type": "string" },
-          "client": {
+          "client_and_project": {
             "type": "string",
-            "description": "Client name, e.g. 'PA Consulting / Home Office'"
+            "description": "Project name shown at top of card"
           },
           "lead": {
             "type": "string",
-            "description": "CF lead name"
+            "description": "CF lead's name"
           },
-          "stage": {
+          "key_metric_large": {
             "type": "string",
-            "enum": ["early", "growing", "scaled"],
-            "description": "Maps to a badge colour in the template"
+            "description": "Big bold number or word e.g. '160+'"
           },
-          "big_win": {
-            "type": ["string", "null"],
-            "description": "One-line headline win. Null if no win to report yet."
-          },
-          "in_progress": {
-            "type": ["string", "null"],
-            "description": "What's currently being worked on"
-          },
-          "metrics": {
-            "type": "array",
-            "maxItems": 4,
-            "items": {
-              "type": "object",
-              "required": ["value", "label"],
-              "additionalProperties": false,
-              "properties": {
-                "value": { "type": "string" },
-                "label": { "type": "string" }
-              }
-            }
-          },
-          "client_quote": {
-            "type": ["string", "null"],
-            "description": "A real quote from someone on the client side. Optional."
-          },
-          "quote_attribution": {
-            "type": ["string", "null"],
-            "description": "Name and role of the person quoted, e.g. 'Khully, Engineer'"
-          },
-          "what_this_shows": {
+          "key_metric_small": {
             "type": "string",
-            "description": "1–2 sentence takeaway. What does this example prove?"
+            "description": "Smaller supporting stat or label"
+          },
+          "key_insight": {
+            "type": "string",
+            "description": "1–2 sentence takeaway shown at the bottom of the card"
           }
         }
       }
