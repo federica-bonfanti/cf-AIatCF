@@ -1,0 +1,90 @@
+{
+  "meta": {
+    "month": "April",
+    "theme": {
+      "name": "easter",
+      "footer_note": "Happy Easter from the AI Division 🐣"
+    }
+  },
+
+  "featured": {
+    "featured_item_title": "Bryan Finster",
+    "subject_subtitle": "Bringing an outside perspective to AI transformation & delivery",
+    "summary": "Bryan shared his experiences with Agentic workflows and his journey from AI-denialist to AI-advocate. This series brings fresh, external perspective to how we think about AI at scale.",
+    "link": "cflearn.example.com/bryan-finster"
+  },
+
+  "tooling": {
+    "tools": [
+      { "name": "Cursor",         "status": "In Trial" },
+      { "name": "Codex",          "status": "In Trial" },
+      { "name": "OpenCode",       "status": "In Trial" },
+      { "name": "Claude",         "status": "In Trial" },
+      { "name": "GitHub Copilot", "status": "In Trial" }
+    ]
+  },
+
+  "client_pipeline": [
+    {
+      "client_name": "Flutter UKI",
+      "project_title": "Agentic Platform within AWS",
+      "ask": "Build an Agentic operational platform within AWS",
+      "answer": "Platform for all Flutter UKI sub-brands + Agent marketplace for all teams",
+      "value": "£1m"
+    },
+    {
+      "client_name": "PayPoint",
+      "project_title": "AI Delivery Capability & Maturity",
+      "ask": "Analyse AI delivery capability and maturity",
+      "answer": "3 CF domain teams proposed transformation on Customer Service — AI-enabled self-service",
+      "value": "£1.5m"
+    },
+    {
+      "client_name": "Royal London",
+      "project_title": "Drive AI Adoption Within Teams",
+      "ask": "Drive AI adoption within Royal London teams",
+      "answer": "Embed a Principal Engineer as first mover, 50/50 on delivery and transformation",
+      "value": "£100k"
+    },
+    {
+      "client_name": "Zuto",
+      "project_title": "Car Finance Transformation",
+      "ask": "Support Zuto — a scaling car finance broker in rapid growth",
+      "answer": "CF as transformation partner, Agentic AI to drive efficiencies and improve white-glove service",
+      "value": "£1m"
+    }
+  ],
+
+  "weekly_ai_call": {
+    "metrics": [
+      { "value": "10%",  "label": "Client-facing Creatrs" },
+      { "value": "40%",  "label": "Strategic clients covered" },
+      { "value": "80%",  "label": "Of projects encompassed" },
+      { "value": "1/wk", "label": "Cadence — ongoing" }
+    ]
+  },
+
+  "evangelist_shoutouts": [
+    {
+      "client_and_project": "Home Office LEDS",
+      "lead": "Jonathan Kirkman",
+      "key_metric_large": "160+",
+      "key_metric_small": "50 engineers piloting",
+      "key_insight": "AI being embedded at scale into day-to-day engineering practices"
+    },
+    {
+      "client_and_project": "Tombola Platform",
+      "lead": "Andy Shutt",
+      "key_metric_large": "Early",
+      "key_metric_small": "Stage adoption",
+      "key_insight": "Laying the groundwork and identifying high-value use cases before scaling"
+    },
+    {
+      "client_and_project": "OAG Analyser",
+      "lead": "Owen Lacey",
+      "key_metric_large": "−½",
+      "key_metric_small": "Time to Value",
+      "key_insight": "Tangible productivity gains and improved team experience through AI + process change"
+    }
+  ]
+}
